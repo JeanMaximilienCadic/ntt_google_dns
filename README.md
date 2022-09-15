@@ -69,7 +69,7 @@ cd ntt_google_dns
 ```
 
 ## Config file
-Create a config file at the root of this repo
+Create a config file at `/opt/google_dns/config.yml`
 
 ```yaml
 project: google_dns
