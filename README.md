@@ -21,8 +21,6 @@ This Google DNS package consists of :
 
 ## Modules
 
-At a granular level, Gnutools is a library that consists of the following components:
-
 | Component | Description |
 | ---- | --- |
 | **google_dns** | Contains the implementation of GoogleDNS |
