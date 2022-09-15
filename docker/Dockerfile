@@ -1,7 +1,7 @@
-FROM python:3.6
+FROM python:3.6-slim
 
 ## Add foo user
-RUN apt update -y && apt install nano sudo -y
+RUN apt update -y && apt install nano sudo --no-install-recommends -y
 RUN adduser --disabled-password --gecos '' foo
 RUN adduser foo sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
@@ -14,6 +14,7 @@ RUN echo "export PYTHONPATH=/workspace" >> /root/.bashrc
 COPY google_dns /workspace/google_dns
 COPY requirements.txt /workspace/
 RUN pip install -r /workspace/requirements.txt
+RUN rm -rf /var/lib/apt/lists/*
 
 # Switch to foo
 RUN chown -R foo /workspace
