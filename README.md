@@ -6,27 +6,26 @@
   <br>
 </h1>
 
-
 <p align="center">
   <a href="#modules">Modules</a> •
-  <a href="#code-design">Code Design</a> •
-  <a href="#install">Install</a> •
-  <a href="#docker">Docker</a> •
-  <a href="#pythonenv">PythonEnv</a> •
-  <a href="#how-to-use">How To Use</a> •
+  <a href="#code-structure">Code structure</a> •
+  <a href="#installing-the-application">Installing the application</a> •
+  <a href="#makefile-commands">Makefile commands</a> •
+  <a href="#environments">Environments</a> •
+  <a href="#running-the-application">Running the application</a>
 </p>
 
-This Google DNS package consists of :
-- A NTT router IP parser to update dynamic DNS on google domains .
+This Google DNS package consists of an NTT router IP parser for updating the dynamic DNS of Google domains.
 
-## Modules
+# Modules
 
 | Component | Description |
 | ---- | --- |
-| **google_dns** | Contains the implementation of GoogleDNS |
+| **google_dns** | Contains the implementation of Google DNS |
 
 
 # Code structure
+
 ```python
 from setuptools import setup
 
@@ -52,65 +51,84 @@ setup(
         "License :: OSI Approved :: MIT License",
     ],
 )
-
 ```
 
-## Install
-To clone and run this application, you'll need [Git](https://git-scm.com) and [ https://docs.docker.com/docker-for-mac/install/]( https://docs.docker.com/docker-for-mac/install/) and Python installed on your computer. 
+# Installing the application
+    
+To clone and run this application, you'll need the following installed on your computer:
+- [Git](https://git-scm.com)
+- Docker Desktop
+   - [Install Docker Desktop on Mac](https://docs.docker.com/docker-for-mac/install/)
+   - [Install Docker Desktop on Windows](https://docs.docker.com/desktop/install/windows-install/)
+   - [Install Docker Desktop on Linux](https://docs.docker.com/desktop/install/linux-install/)
+- [Python](https://www.python.org/downloads/)
 
-From your command line:
+From the command line, enter the following:
 
-```bash
-# Clone this repository and install the code
+```console
+# Clone this repository
 git clone https://github.com/JeanMaximilienCadic/ntt_google_dns
 
 # Go into the repository
 cd ntt_google_dns
 ```
 
-## Config file
-Create a config file at `/opt/google_dns/config.yml`
+## Setting up the config file
+
+Create a config file at `/opt/google_dns/config.yml`. Then, add the following to the file.
 
 ```yaml
 project: google_dns
-url: 'http://[YOUR ROUTER IP]/ntt/information/fifth/current'
+url: 'http://<your-router-IP>/ntt/information/fifth/current'
 authorization: "dXNlcjphZG1pbg=="
 cookie: 'HGWSESSIONID=1hoa40gjlzl2g'
 
 hostnames:
-- hostname: "mywebsite.com"
-  google_id: "ksfjIkmldslI"
-  google_password: 'sdk11kjl1jd'
-
+- hostname: "<your-website.com>"
+  google_id: "<your-Google-ID>"
+  google_password: '<your-Google-password>'
 ```
 
-## Makefile
+# Makefile commands
+
 Exhaustive list of make commands:
-```
+
+```console
 build_docker
 push_docker
 pull_docker
 docker_run
 checkout
 ```
+
+# Environments
+
 ## Docker
-(\* recommended)
+
+> **Note**
+> 
+> Running this application by using Docker is recommended.
 
 To build and run the docker image
-```
+```console
 make build_docker
 make docker_run
 ```
 
 ## PythonEnv
-(\* not recommended)
-```
+
+> **Warning**
+> 
+> Running this application by using PythonEnv is possible but *not* recommended.
+
+```console
 python setup.py install 
 ```
 
-## How to
-* Run the cron job
-```shell
+# Running the application
+
+To run the application, enter the following from the command line:
+
+```console
 python -m google_dns
 ```
-
