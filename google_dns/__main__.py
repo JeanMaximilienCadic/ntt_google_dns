@@ -40,5 +40,5 @@ if __name__ == "__main__":
             )
             logging.warning(requests.get(url).text)
         time.sleep(3600)
-    except:
-        pass
+    except AssertionError:
+        logging.warning("Exiting the global IP could not be retrieved...")
