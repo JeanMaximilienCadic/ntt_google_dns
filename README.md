@@ -40,7 +40,7 @@ setup(
     packages=[
         "google_dns",
     ],
-    url="https://github.com/JeanMaximilienCadic/google_dns",
+    url="https://github.com/JeanMaximilienCadic/ntt_google_dns",
     license="MIT",
     author="Jean Maximilien Cadic",
     long_description="".join(open("README.md", "r").readlines()),
