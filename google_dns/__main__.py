@@ -1,9 +1,10 @@
+import logging
 import time
 
 import requests
 
 from google_dns import cfg
-import logging
+
 
 def get_ip():
     url = cfg.url

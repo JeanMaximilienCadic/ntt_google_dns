@@ -1,4 +1,5 @@
 from setuptools import setup
+
 from google_dns import __version__
 
 setup(
