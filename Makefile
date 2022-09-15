@@ -18,21 +18,15 @@ help:
 
 
 # BUILD DOCKER
-build_dockers: build_docker
-
 build_docker:
 	docker build . -t  $(IMAGE) --network host -f docker/Dockerfile
 
 # PUSH
-push_dockers: push_docker
-
 push_docker:
 	docker push $(IMAGE_SANDBOX)
 
 
 # BUILD WHEEL
-build_wheels: build_wheel
-
 install_requirements:
 	@pip install -r requirements.txt
 
@@ -42,8 +36,6 @@ build_wheel: install_requirements
 			python setup.py bdist_wheel
 	
 # PULL
-pull_dockers: pull_docker
-
 pull_docker:
 	docker pull $(IMAGE)
 
