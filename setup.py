@@ -1,5 +1,5 @@
 from setuptools import setup
-from gnutools import __version__
+from google_dns import __version__
 
 setup(
     name="google_dns",
