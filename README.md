@@ -87,11 +87,8 @@ hostnames:
 ## Makefile
 Exhaustive list of make commands:
 ```
-build_dockers
 build_docker
-push_dockers
 push_docker
-pull_dockers
 pull_docker
 docker_run
 checkout
