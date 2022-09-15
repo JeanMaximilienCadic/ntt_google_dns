@@ -2,8 +2,8 @@ FROM python:3.6-slim
 
 ## Add foo user
 RUN apt update && \
-    apt install nano sudo --no-install-recommends -y & \
-    adduser --disabled-password --gecos '' foo & \
+    apt install nano sudo --no-install-recommends -y && \
+    adduser --disabled-password --gecos '' foo && \
     adduser foo sudo && \
     echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
     echo 'export PYTHONPATH=/workspace' >> /home/foo/.bashrc
