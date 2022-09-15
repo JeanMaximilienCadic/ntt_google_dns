@@ -31,7 +31,8 @@ At a granular level, Gnutools is a library that consists of the following compon
 # Code structure
 ```python
 from setuptools import setup
-from gnutools import __version__
+
+from google_dns import __version__
 
 setup(
     name="google_dns",
@@ -53,6 +54,7 @@ setup(
         "License :: OSI Approved :: MIT License",
     ],
 )
+
 ```
 
 ## Install
