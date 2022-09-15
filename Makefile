@@ -1,20 +1,15 @@
 # PHONY are targets with no files to check, all in our case
 .DEFAULT_GOAL := help
 
-PACKAGE_NAME=google_dns
 ORG=cadic
+PACKAGE_NAME=google_dns
 IMAGE=$(ORG)/$(PACKAGE_NAME)
-SRV=/srv
-FILESTORE=/FileStore
 
 # Makefile for launching common tasks
 DOCKER_OPTS ?= \
-    -e DISPLAY=${DISPLAY} \
-	-v $(HOME)/.ssh:/home/foo/.ssh \
-	-v $(HOME)/.config:/home/foo/.config \
-	-v $(PWD):/workspace \
-	--network=host \
-	--privileged
+	--restart unless-stopped \
+    -v /opt/google_dns:/opt/google_dns \
+	--network=host
 
 help:
 	@echo "Usage: make {build,  bash, ...}"
@@ -45,7 +40,6 @@ docker_run:
 	@docker stop dev_$(PACKAGE_NAME) || true
 	@docker rm dev_$(PACKAGE_NAME) || true
 	docker run --name dev_$(PACKAGE_NAME) ${DOCKER_OPTS} -dt $(IMAGE)
-	docker exec -it dev_$(PACKAGE_NAME) bash
 
 checkout:
 	# Update git

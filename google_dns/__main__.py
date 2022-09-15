@@ -3,7 +3,7 @@ import time
 import requests
 
 from google_dns import cfg
-
+import logging
 
 def get_ip():
     url = cfg.url
@@ -11,7 +11,7 @@ def get_ip():
         'content-type': 'application/json',
         'Accept-Charset': 'UTF-8',
         'Authorization': f'Basic {cfg.authorization}',
-        'Cookie': {cfg.cookie}
+        'Cookie': cfg.cookie
     }
     # Send request
     data = requests.get(url, headers=headers).text
@@ -28,6 +28,6 @@ if __name__ == "__main__":
             f":{host.google_password}@domains.google.com/nic/update?"\
             f"hostname={host.hostname}&"\
             f"myip={my_ip}"
-        print(requests.get(url).text)
+        logging.warning(requests.get(url).text)
     time.sleep(3600)
 
