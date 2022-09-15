@@ -1,3 +1,4 @@
+dist/legacy
 build
 *egg-info*
 .vscode

@@ -8,7 +8,7 @@ IMAGE=$(ORG)/$(PACKAGE_NAME)
 # Makefile for launching common tasks
 DOCKER_OPTS ?= \
 	--restart unless-stopped \
-    -v /opt/google_dns:/opt/google_dns \
+	-v /opt/google_dns:/opt/google_dns \
 	--network=host
 
 help:
@@ -29,6 +29,18 @@ push_dockers: push_docker
 push_docker:
 	docker push $(IMAGE_SANDBOX)
 
+
+# BUILD WHEEL
+build_wheels: build_wheel
+
+install_requirements:
+	@pip install -r requirements.txt
+
+build_wheel: install_requirements
+	# Build the wheels
+	@mv dist/$(PACKAGE_NAME)*.whl dist/legacy/ || true; \
+			python setup.py bdist_wheel
+	
 # PULL
 pull_dockers: pull_docker
 
