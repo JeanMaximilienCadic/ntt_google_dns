@@ -50,7 +50,3 @@ checkout:
 	@git checkout -b dev || true; \
 		git add .; git commit -m "ack"; \
 		git push origin dev
-
-# ALL
-all: build checkout push_dockers
-all_branch: build_wheels checkout

@@ -92,8 +92,6 @@ push_docker
 pull_docker
 docker_run
 checkout
-all
-all_branch
 ```
 ## Docker
 (\* recommended)
