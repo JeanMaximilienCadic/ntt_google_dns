@@ -23,7 +23,7 @@ build_docker:
 
 # PUSH
 push_docker:
-	docker push $(IMAGE_SANDBOX)
+	docker push $(IMAGE)
 
 
 # BUILD WHEEL
